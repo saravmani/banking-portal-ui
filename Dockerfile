@@ -2,7 +2,13 @@
 FROM node:lts-alpine AS build
 WORKDIR /usr/src/app
 
+FROM nginx:1.17.1-alpine
+COPY ../nginx.conf /etc/nginx/nginx.conf
 
+RUN echo "@@@@@@@@@@@@@@"
+RUN echo "@@@@@@@@@@@@@@"
+RUN echo "@@@@@@@@@@@@@@"
+RUN echo "@@@@@@@@@@@@@@"
 
 COPY package.json package-lock.json ./
 RUN npm install
