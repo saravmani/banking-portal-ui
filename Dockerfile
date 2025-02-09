@@ -9,7 +9,9 @@ RUN npm run build
 ### STAGE 2: Run ###
 FROM nginx:1.17.1-alpine
 COPY nginx.conf /etc/nginx/nginx.conf
-COPY --from=build /usr/src/app/dist/banking-portal /usr/share/nginx/html
+# COPY --from=build /usr/src/app/dist/banking-portal /usr/share/nginx/html
+COPY --chown=nginx:nginx --from=build /usr/src/app/dist/banking-portal /usr/share/nginx/html 
+
 
 # Adjust permissions for OpenShift
 RUN chgrp -R 0 /var/cache/nginx /var/run /var/log/nginx && \
