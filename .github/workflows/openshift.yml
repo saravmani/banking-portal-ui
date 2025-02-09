@@ -149,6 +149,8 @@ jobs:
         # Otherwise, point this to your Dockerfile/Containerfile relative to the repository root.
         dockerfiles: |
           ./Dockerfile
+        build-args: | # Add this section
+          BUILD_ID=$(date +%s) # Or any other unique value
 
     # https://github.com/redhat-actions/push-to-registry#readme
     - name: Push to registry
